@@ -1,0 +1,23 @@
+<form action="." enctype="multipart/form-data" method="POST">
+{% csrf_token %}
+<input type="file" name="file_excel">
+<input type="submit" value="CARGAR">
+</form>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <h1>que cargaras</h1>
+    <p>
+        
+        {% for filas in mostrar%}
+        <ul>
+            {% for columna in filas %}
+                <li>{{columna.value}} <input type="number" name="{{columna.value}}" width="10" ></li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+        
+    </p>
+</div>

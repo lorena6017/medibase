@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<!-- Seleccion de Archivo .xsls con informacion a importar-->
+<div>
+  <h2>Importar Información</h2>
+  <form action="." enctype="multipart/form-data" method="POST">
+    <div class="row well">
+      {% csrf_token %}
+      <div class="col-md-3 col-lg-3 col-sm-6">
+
+        <input type="file" name="file_excel">
+      </div>
+      <div class="col-md-6 col-ls-6">
+
+      </div>
+      <div class="col-md-3 col-lg-3 col-sm-6">
+        <input type="submit" class="btn btn-primary" value="Cargar"></button>
+      </div>
+  </form>
+</div>
+<!-- Aqui finaliza el carge de archivo-->
+<p>
+  Identifica el nombre de la celda en la que empieza la primera columna y terminar la última columna de tu
+  tabla. Debe ser un renglón.      
+          <input type="text" size="4" maxlength="4" placeholder="Ejemplo B2"> 
+          <input type="text" size="4" maxlength="4" placeholder="Ejemplo F2">
+</p>
+<div class="col"></div>
+<br>
+<!--Asociacion de de objetos de la base de datos y el nombre de las columas identificadas-->
+
+<div class="row well">
+  <p align="justify">
+    <h2>Relaciona la columna de la izquierda con el nombre identificado del archivo Excel. </h2>
+  </p>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        {% for q in query %}
+        <li class="list-group-item">{{forloop.counter}}. {{q}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      {% for filas in mostrar%}
+      <ul class="list-group">
+        {% for columna in filas %}
+        <li class="list-group-item">{{forloop.counter}}. {{columna.value}} <input type="number" name="{{columna.value}}"
+            class="w3-animate-opacity form-control" size="3" maxlength="3"></li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br>
+<div class="col align-self-center">
+  <div class="row">
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-2">
+      <a type="text" href="{% url 'medi:lista_medico'%}" class="btn btn-primary center-block">Importar</a>
+      <br>
+    </div>
+
+    <div class="col-md-5">
+
+    </div>
+
+  </div>
+
+  {% endblock%}
+  {% block extrajs %}
+
+  {% endblock %}

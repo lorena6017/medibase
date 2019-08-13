@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form method="post" action=".">
+    <input type="hidden" id="fecha_actual" value="{{ fecha_actual }}">
+    {% csrf_token %}
+
+    <h1> Informacion Personal</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form.tipoDocumento }}
+        </div>
+        <div class="col-md-3">
+            {{ form.numeroDocumento }}
+        </div>
+        <div class="col-md-3">
+            {{ form.primerNombre }}
+        </div>
+        <div class="col-md-3">
+            {{ form.segundoNombre }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form.primerApellido }}
+        </div>
+        <div class="col-md-3">
+            {{ form.segundoApellido }}
+        </div>
+
+        <div class="col-md-3">
+            {{ form.fecha_nacido}}
+        </div>
+
+        <div class="col-md-3">
+            {{ form.edad }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form.genero }}
+        </div>
+        <div class="col-md-6">
+            {{ form.correo }}
+        </div>
+    </div>
+    <br>
+    <h1>Informacion Laboral</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{form2.correoLaboral}}
+        </div>
+        <div class="col-md-3">
+            {{ form2.Municipios }}
+        </div>
+        <div class="col-md-3">
+            {{ form2.Especialidad }}
+        </div>
+        <div class="col-md-3">
+            {{ form2.Institucion }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form2.TipoMonotributo}}
+        </div>
+        <div class="col-md-3">
+            {{ form2.celular }}
+        </div>
+        <div class="col-md-3">
+            {{ form2.telefono }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form2.direccion }}
+        </div>
+    </div>
+    <div>
+    </div>
+    </div>
+    <br>
+    <div class="col align-self-center">
+        <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    </br>
+</form>
+{% endblock %}
